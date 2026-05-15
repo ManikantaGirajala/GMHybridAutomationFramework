@@ -7,19 +7,47 @@ public class LoginPage {
 
     WebDriver driver;
 
+    // Locators
+    By usernameField = By.id("user-name");
+    By passwordField = By.id("password");
+    By loginButton = By.id("login-button");
+
+    // Constructor
     public LoginPage(WebDriver driver) {
 
         this.driver = driver;
 
     }
 
+    // Reusable Methods
+
+    public void enterUsername(String username) {
+
+        driver.findElement(usernameField).sendKeys(username);
+
+    }
+
+    public void enterPassword(String password) {
+
+        driver.findElement(passwordField).sendKeys(password);
+
+    }
+
+    public void clickLoginButton() {
+
+        driver.findElement(loginButton).click();
+
+    }
+
+    // Combined Login Method
+
     public void login(String username, String password) {
 
-        driver.findElement(By.id("user-name")).sendKeys(username);
+        enterUsername(username);
 
-        driver.findElement(By.id("password")).sendKeys(password);
+        enterPassword(password);
 
-        driver.findElement(By.id("login-button")).click();
+        clickLoginButton();
 
     }
 
