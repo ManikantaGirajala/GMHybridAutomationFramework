@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
+import java.time.Duration;
+
 public class LoginTest {
 
     @Test
@@ -23,6 +25,8 @@ public class LoginTest {
 
         // Launch Chrome browser
         WebDriver driver = new ChromeDriver(options);
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // Maximize browser window
         driver.manage().window().maximize();

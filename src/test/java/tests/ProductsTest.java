@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.ProductsPage;
 
+import java.time.Duration;
+
 public class ProductsTest {
     @Test
     public void productsTest(){
@@ -20,6 +22,8 @@ public class ProductsTest {
         options.addArguments("--disable-save-password-bubble");
 
         WebDriver driver = new ChromeDriver(options);
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.manage().window().maximize();
 
@@ -34,6 +38,8 @@ public class ProductsTest {
         boolean status = productsPage.isProductsTitleDisplayed();
 
         System.out.println("Product Title Displayed - " + status);
+
+        productsPage.clickAddToCart();
 
         driver.quit();
 
